@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Get word information</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Translate</button>
+    </form>
+    <h1>Word Information</h1>
+    <p>Word: {{ word }}</p>
+    <p>Phonetic Pronunciation: {{phonetic_pronunciation}}</p>
+    <p>Definition: {{ word_definition }}</p>
+</body>
+</html>
