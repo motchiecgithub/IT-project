@@ -1,0 +1,302 @@
+.access-to-all1,
+.start-for-free1 {
+  position: relative;
+  line-height: 30px;
+}
+.access-to-all1 {
+  font-size: var(--regular-size);
+  line-height: 14px;
+  color: var(--neutral-5);
+}
+.top-titel2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-3xs);
+}
+.icongoogle3 {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.sign-up-with3 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: relative;
+  font-size: var(--regular-size);
+  line-height: 22px;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--neutral-6);
+  text-align: left;
+  display: inline-block;
+}
+.icongoogle-parent1 {
+  position: absolute;
+  top: 9px;
+  left: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+}
+.button10 {
+  position: relative;
+  border-radius: var(--br-7xs);
+  border: 1px solid var(--color-gainsboro-100);
+  box-sizing: border-box;
+  width: 360px;
+  height: 42px;
+}
+.input8,
+.top-titel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.top-titel-container {
+  align-items: center;
+  gap: var(--gap-11xl);
+}
+.continue-child1 {
+  position: relative;
+  border-top: 1px solid var(--color-whitesmoke-100);
+  box-sizing: border-box;
+  width: 115px;
+  height: 1px;
+}
+.or-continue-with3 {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 13px;
+  display: inline-block;
+  width: 98px;
+  flex-shrink: 0;
+}
+.continue2,
+.frame-parent13 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.continue2 {
+  flex-direction: row;
+  gap: var(--gap-mid);
+  font-size: var(--font-size-smi);
+  color: var(--dark-g-60);
+}
+.frame-parent13 {
+  flex-direction: column;
+  gap: var(--gap-5xl);
+  font-size: var(--h3-size);
+}
+.full-name4 {
+  position: relative;
+  line-height: 14px;
+  font-weight: 500;
+}
+.titel9 {
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.enter-your-name4 {
+  border: 0;
+  font-family: var(--font-inter);
+  font-size: var(--regular-size);
+  background-color: transparent;
+  position: relative;
+  line-height: 14px;
+  color: var(--white-4);
+  text-align: left;
+}
+.text9 {
+  border-radius: var(--br-7xs);
+  border: 1px solid var(--white-2);
+  box-sizing: border-box;
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-sm) var(--padding-3xs) var(--padding-sm)
+    var(--padding-mini);
+  align-items: center;
+  justify-content: flex-start;
+}
+.enter-your-password-wrapper1,
+.input9 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.input9 {
+  flex-direction: column;
+  gap: var(--gap-4xs);
+}
+.enter-your-password-wrapper1 {
+  width: 262px;
+  flex-direction: row;
+  padding: 0 var(--padding-3xs) 0 0;
+  box-sizing: border-box;
+}
+.eye-on-icon5 {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.frame-parent14 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-33xl);
+}
+.input11,
+.text11 {
+  flex-direction: column;
+}
+.text11 {
+  border-radius: var(--br-7xs);
+  border: 1px solid var(--white-2);
+  display: flex;
+  padding: var(--padding-xs) var(--padding-sm);
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.input11 {
+  gap: var(--gap-4xs);
+  color: var(--dark-d-90);
+}
+.frame-item,
+.input-container,
+.input11 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame-item {
+  border: 0;
+  font-family: var(--font-inter);
+  font-size: var(--regular-size);
+  background-color: transparent;
+  width: 262px;
+  flex-direction: row;
+  padding: 0 var(--padding-3xs) 0 0;
+  box-sizing: border-box;
+}
+.input-container {
+  flex-direction: column;
+  gap: var(--gap-base);
+  color: var(--dark-5);
+}
+.sign-in4 {
+  text-decoration: none;
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 21px;
+  font-weight: 700;
+  color: inherit;
+}
+.button11,
+.frame-parent12 {
+  display: flex;
+  align-items: center;
+}
+.button11 {
+  border-radius: var(--br-7xs);
+  background-color: var(--purple);
+  width: 360px;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  justify-content: center;
+  color: var(--white-1);
+}
+.frame-parent12 {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-4xl);
+}
+.already-have-an1 {
+  line-height: 21px;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--white-6);
+}
+.span1 {
+  line-height: 14px;
+}
+.sign-in5 {
+  letter-spacing: -0.02em;
+  line-height: 21px;
+}
+.already-have-an-container1 {
+  text-decoration: none;
+  position: relative;
+  color: inherit;
+}
+.already-have-an-account-sign-container {
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs) var(--padding-31xl);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  color: var(--purple);
+}
+.frame-parent11,
+.sign-up2 {
+  display: flex;
+  justify-content: flex-start;
+}
+.frame-parent11 {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-3xs);
+}
+.sign-up2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-sm);
+  background-color: var(--white-1);
+  box-shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  padding: var(--padding-21xl);
+  align-items: flex-start;
+}
+.sign-up-wrapper,
+.vector-parent {
+  position: absolute;
+  top: 103px;
+  left: 500px;
+  width: 440px;
+  height: 689px;
+}
+.vector-parent {
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 895px;
+}
+.sign-up1 {
+  position: relative;
+  width: 100%;
+  height: 895px;
+  text-align: left;
+  font-size: var(--regular-size);
+  color: var(--neutral-8);
+  font-family: var(--font-inter);
+}

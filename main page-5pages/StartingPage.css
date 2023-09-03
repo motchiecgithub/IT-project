@@ -1,0 +1,105 @@
+@keyframes fade-in-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.phonetic-texts-6-1,
+.phonetic-texts-7-1 {
+  text-decoration: none;
+  position: absolute;
+  top: 689px;
+  left: 277px;
+  width: 143px;
+  height: 53px;
+  background-image: url(./public/phonetictexts71@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.phonetic-texts-6-1 {
+  left: 93px;
+  width: 142px;
+  background-image: url(./public/phonetictexts61@3x.png);
+}
+.sample-53 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    -75.75deg,
+    rgba(143, 0, 255, 0.42),
+    rgba(17, 69, 255, 0.42) 98.2%
+  );
+  width: 1440px;
+  height: 900px;
+}
+.phonetic-pioneers3 {
+  margin: 0;
+  position: absolute;
+  top: 105px;
+  left: 101px;
+  font-size: inherit;
+  line-height: 22px;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-block;
+  width: 236px;
+}
+.sample-5-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 900px;
+}
+.c-lara1,
+.phonetic-texts1 {
+  margin: 0;
+  position: absolute;
+  line-height: 22px;
+}
+.c-lara1 {
+  top: 400px;
+  left: 81px;
+  font-size: var(--font-size-101xl);
+  font-weight: 400;
+  font-family: var(--font-bruno-ace);
+}
+.phonetic-texts1 {
+  top: 527px;
+  left: 96px;
+  font-size: var(--font-size-36xl);
+  font-weight: 500;
+  font-family: inherit;
+}
+.clip-path-group1 {
+  position: absolute;
+  height: 48.78%;
+  width: 41.44%;
+  top: 29.67%;
+  right: 5.08%;
+  bottom: 21.56%;
+  left: 53.47%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.clip-path-group1.animate {
+  animation: 3s ease 0s 1 normal forwards fade-in-bottom;
+}
+.starting-page {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  text-align: left;
+  font-size: var(--h3-size);
+  color: var(--color-black);
+  font-family: var(--font-montserrat-alternates);
+}
