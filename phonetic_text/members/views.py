@@ -42,3 +42,6 @@ def translate(request):
   else:
     form = TranslationForm()
   return render(request, 'translate.html', {'form': form})
+
+def index(request):
+  return render(request, 'index.html')
