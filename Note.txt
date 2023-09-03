@@ -1,8 +1,0 @@
-Extract all files from the Lib.zip and put them under the same directory with other files e.g. web folder
-To run the web
-1. Run CMD using win+R
-2. Cd to the web folder, enter the command: Scripts\activate.bat
-3. Cd to phonetic_text folder, run the server: python manage.py runserver
-4. Open the browser, go to 127.0.0.1:8000/common/ to open the website
-
-
