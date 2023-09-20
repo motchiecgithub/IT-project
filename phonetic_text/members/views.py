@@ -1,7 +1,12 @@
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member
-from program import *
+from search import *
+from django.shortcuts import render
+from .forms import TranslationForm
+from soundex import *
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from list_convert import *
 
 def members(request):
   mymembers = Member.objects.all().values()
@@ -30,18 +35,20 @@ def translate(request):
     form = TranslationForm(request.POST)
     if form.is_valid():
             english_text = form.cleaned_data['english_text']
-            text = phonetic_translate(english_text, "en_US")
+            text = phonetic_translate_word(english_text, "en_US")
             soundex = phonetic_soundex(english_text)
             metaphone = phonetic_metaphone(english_text)
+            letters = phonetic_translate_letter(text[1], list_convert(english_text), "en_US")
             context = {
               'text': text,
               'soundex': soundex,
               'metaphone': metaphone,
+              'letters': letters,
             }
             return render(request, 'translate.html', {'form': form, 'context': context})
   else:
     form = TranslationForm()
   return render(request, 'translate.html', {'form': form})
-
+            
 def index(request):
   return render(request, 'index.html')
