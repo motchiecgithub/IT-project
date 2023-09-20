@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{% static 'css/global_translate.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/translate_c.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sample-5-parent">
+      <div class="sample-5">
+        <div class="sample-5-child"></div>
+        <img
+          class="phonetic-pioneers-5-1"
+          alt=""
+          src= "{% static 'images/phonetic-pioneers-5-1@2x.png' %}"
+        />
+
+        <div class="sample-5-item"></div>
+        <input class="tell-ai-to" type="search" />
+
+        <button class="phonetic-texts-3-1"></button>
+        <img
+          class="arrow-block-right-icon"
+          alt=""
+          src="{% static 'images/arrowblockright.svg %}"
+        />
+
+        <img
+          class="arrow-block-left-icon"
+          alt=""
+          src="{% static 'images/arrowblockleft.svg%}" 
+        />
+      </div>
+      <div class="phonetic-pioneers">Phonetic Pioneers</div>
+      <a class="language-choices" target="_blank">Language choices</a>
+      <a class="uploading-docs" target="_blank">Uploading docs</a>
+      <img class="frame-child" alt="" src="{% static 'images/rectangle-246.svg%}" />
+
+      <textarea class="type-words-to">Type words to learn...</textarea>
+      <img class="frame-item" alt="" src="{% static 'images/rectangle-247.svg%}" />
+    </div>
+  </body>
+</html>
