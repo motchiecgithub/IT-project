@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/translate_c.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sample-5-parent">
+      <div class="sample-5">
+        <div class="sample-5-child"></div>
+        <img
+          class="phonetic-pioneers-5-1"
+          alt=""
+          src= "{% static 'images/phonetic-pioneers-5-1@2x.png' %}"
+        />
+
+        <div class="sample-5-item"></div>
+        <input class="tell-ai-to" type="search" />
+        
+        <!-- the translate button -->
+        <a class="phonetic-texts-3-1" href="http://127.0.0.1:8000/translate" target="_self">
+          <img src="{% static 'images/phonetictexts31@3x.png' %}" alt="Button Image" width="54" height="52">
+        </a>
+
+        <img
+          class="arrow-block-right-icon"
+          alt=""
+          src="{% static 'images/arrowblockright.svg' %}"
+        />
+
+        <img
+          class="arrow-block-left-icon"
+          alt=""
+          src="{% static 'images/arrowblockleft.svg' %}" 
+        />
+      </div>
+
+      <!-- The buttons -->
+      <a class="phonetic-pioneers" href= "http://127.0.0.1:8000/" target = "_self">Phonetic Pioneers</a>
+      <a class="language-choices" href= "http://127.0.0.1:8000/translate_c/" target="_self">Language choices</a>
+      <a class="uploading-docs" href= "http://127.0.0.1:8000/translate_c/" target="_self">Uploading docs</a>
+      <!-- The buttons -->
+
+      <img class="frame-child" alt="" src="{% static 'images/rectangle-246.svg' %}" />
+
+      <textarea class="type-words-to">Type words to learn...</textarea>
+      <img class="frame-item" alt="" src="{% static 'images/rectangle-247.svg' %}" />
+    </div>
+  </body>
+</html>
