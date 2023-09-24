@@ -63,6 +63,8 @@ Coding Process note & Testing History
 2023/15/09 - version - 3.0
 1. Restructure of the old folder
 2. Added translate_c html for better web
+3. static files updated for translate_c.html
+4. Bug fixing
 
 
 
