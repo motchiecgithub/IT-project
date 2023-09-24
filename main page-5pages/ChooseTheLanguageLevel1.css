@@ -1,0 +1,235 @@
+.icon3 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-6xl);
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.logo3 {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.los-angeles-united3,
+.ui-store3 {
+  position: relative;
+  font-weight: 500;
+}
+.los-angeles-united3 {
+  font-size: var(--font-size-xs);
+  color: var(--white-6);
+}
+.logo-parent1,
+.ui-store-parent1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-7xs);
+}
+.logo-parent1 {
+  flex-direction: row;
+  gap: var(--gap-smi);
+}
+.novice {
+  margin: 0;
+  font-size: var(--font-size-smi);
+}
+.new-to-the {
+  margin: 0;
+  font-size: var(--font-size-4xs);
+}
+.pricing4 {
+  position: relative;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-black);
+  text-align: center;
+  display: none;
+}
+.button6,
+.pricing5 {
+  cursor: pointer;
+  border: 0;
+}
+.button6 {
+  padding: var(--padding-6xs) var(--padding-16xl);
+  background-color: var(--color-plum);
+  border-radius: var(--br-7xs);
+  width: 96px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.pricing5 {
+  padding: 0;
+  background-color: transparent;
+  position: relative;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--dark-1);
+  text-align: center;
+  display: none;
+}
+.button7 {
+  border-radius: var(--br-7xs);
+  background-color: var(--color-lightsteelblue);
+  width: 96px;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-6xs) var(--padding-16xl);
+  box-sizing: border-box;
+}
+.button-parent1,
+.frame-parent1 {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.button-parent1 {
+  display: none;
+  flex-direction: row;
+  gap: var(--gap-mini);
+}
+.frame-parent1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-11xl);
+}
+.author-card3,
+.rectangle-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.author-card3 {
+  border-radius: var(--br-smi);
+  background-color: var(--whitsh-pure-white);
+  border: 1px solid var(--whitsh-pure-white);
+  box-sizing: border-box;
+  width: 475.09px;
+  height: 353px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-5xl) var(--padding-8xl);
+}
+.rectangle-div {
+  border-radius: var(--br-5xs);
+  background-color: var(--color-lightsteelblue);
+  width: 442px;
+  height: 51px;
+}
+.proficiency-have-some {
+  text-decoration: none;
+  position: absolute;
+  top: 4px;
+  left: 11px;
+  font-weight: 500;
+  color: inherit;
+  display: inline-block;
+  width: 389px;
+}
+.rectangle-parent {
+  position: absolute;
+  top: 290px;
+  left: 21px;
+  width: 442px;
+  height: 51px;
+  font-size: var(--m-size);
+}
+.author-card-parent {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  width: 475.09px;
+  height: 353px;
+  color: var(--dark-1);
+}
+.phonetic-texts-iconsgraphs-des {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 218px;
+  height: 238px;
+  object-fit: cover;
+}
+.level {
+  margin: 0;
+}
+.choose-your-language-container {
+  position: absolute;
+  top: 69px;
+  left: 244px;
+  font-size: 32px;
+  font-weight: 500;
+  display: inline-block;
+  width: 219px;
+  height: 129px;
+}
+.novice-new-to,
+.rectangle-a {
+  text-decoration: none;
+  position: absolute;
+}
+.rectangle-a {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-5xs);
+  background-color: #ffc87d;
+  width: 442px;
+  height: 51px;
+}
+.novice-new-to {
+  top: 6px;
+  left: 14px;
+  font-weight: 500;
+  color: inherit;
+  display: inline-block;
+  width: 421px;
+  height: 41px;
+}
+.rectangle-group {
+  position: absolute;
+  top: 235px;
+  left: 23px;
+  width: 442px;
+  height: 51px;
+  font-size: var(--m-size);
+}
+.group-div {
+  position: absolute;
+  top: 276px;
+  left: 482px;
+  width: 475.09px;
+  height: 379px;
+}
+.vector-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 895px;
+}
+.choose-the-language-level-1 {
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+  height: 895px;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
