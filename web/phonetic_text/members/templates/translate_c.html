@@ -2,6 +2,85 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      .translate-button{
+        position:absolute;
+        display: block;
+        top: 804px;
+        left: 505px;
+        cursor:pointer;
+      }
+      .clickable-word {
+        cursor: pointer;
+        text-decoration: underline;
+        margin-right: 5px;
+        position: relative;
+        font-family: var(--font-inter);
+        font-size: var(--font-size-sm);
+        top: 82px;
+        left: 34px;
+      }
+      #title {
+        position: absolute;
+        top: 100px;
+        left: 750px;
+        font-size:xx-large;
+        color: rgb(130, 29, 212);
+        font-weight: bold;
+      }
+      #clicked-message1 {
+          position: absolute;
+          top: 160px;
+          left: 750px;
+          font-size:x-large;
+          color: rgb(196, 26, 167);
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #phonetic_translation {
+          position: absolute;
+          top: 200px;
+          left: 750px;
+          font-size: large;
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #clicked-message2 {
+          position: absolute;
+          top: 330px;
+          left: 750px;
+          font-size:x-large;
+          color: rgb(196, 26, 167);
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #definition {
+          position: absolute;
+          top: 365px;
+          left: 750px;
+          font-size:large;
+          font-weight: bold;
+          word-wrap: break-word; 
+      }
+      #clicked-message3 {
+          position: absolute;
+          top: 550px;
+          left: 750px;
+          font-size:x-large;
+          color: rgb(196, 26, 167);
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #similar {
+          position: absolute;
+          top: 585px;
+          left: 750px;
+          font-size:large;
+          font-weight: bold;
+          display: none; /* Initially hidden */ 
+      }
+    </style>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -51,8 +130,97 @@
 
       <img class="frame-child" alt="" src="{% static 'images/rectangle-246.svg' %}" />
 
-      <textarea class="type-words-to">Type words to learn...</textarea>
+      <!-- The userinput text area -->
+      <textarea id="user-input" class="type-words-to">Type words to learn...</textarea>
+      <button id="translate-button" class ="translate-button">Translate</button>
+      <div id="clickable-words"></div>
+      <div id="clicked-message1">Phonetic Value & Sound Group</div>
+      <div id="clicked-message2">Definitions</div>
+      <div id="clicked-message3">Words with Similar Phonetic Structure</div>
+      <div id="phonetic_translation"></div>
+      <div id="title"></div>
+      <div id="definition"></div>
+      <div id="similar"></div>
+      
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+              const userInput = document.getElementById('user-input');
+              const translateButton = document.getElementById('translate-button');
+              const clickableWords = document.getElementById('clickable-words');
+              const clickedMessage1 = document.getElementById('clicked-message1');
+              const clickedMessage2 = document.getElementById('clicked-message2');
+              const clickedMessage3 = document.getElementById('clicked-message3');
+              const title = document.getElementById('title');
+              const definition = document.getElementById('definition');
+              const similar = document.getElementById('similar');
+              const phonetic_translation = document.getElementById('phonetic_translation');
+  
+              translateButton.addEventListener('click', function () {
+                  const inputText = userInput.value;
+                  const words = inputText.split(/\s+/); // Split the input text by spaces
+  
+                  // Create clickable links for each word
+                  words.forEach(word => {
+                      const wordLink = document.createElement('span');
+                      wordLink.textContent = word;
+                      wordLink.classList.add('clickable-word');
+
+                      // clickable word behavior
+                      wordLink.addEventListener('click', function () {  
+                        //---------------------------------------
+                        var content = wordLink.textContent.toLowerCase();
+
+                        $.ajax({
+                          type: 'POST',
+                          url: 'process_word_link/',
+                          data: { csrfmiddlewaretoken: '{{ csrf_token }}', content: content},
+                          success: function callback(response){
+                            const t = word.toUpperCase();
+                            title.textContent = t;
+                            title.style.display = 'block';
+                            phonetic_translation.textContent = response;
+                            phonetic_translation.style.display = 'block';
+
+                            if (t.toLowerCase() == "demo"){
+                              definition.textContent = "Demo is short for demonstration, is a brief presentation or sample that showcases the features and capabilities of a product, service, or software to potential users or customers.";
+                              similar.style.whiteSpace = 'pre-line';
+                              similar.textContent = "\nMemo\n\nDemo\n\nNemo"                            
+                            }
+                            if (t.toLowerCase() == "translation"){
+                              definition.textContent = "Translation is the act of converting text or speech from one language to another, preserving the original content's meaning and facilitating cross-cultural communication.";
+                              similar.style.whiteSpace = 'pre-line';
+                              similar.textContent = "\nRotation\n\nFoundation\n\nTranslation"                             
+                            }
+                            if (t.toLowerCase() == "test"){
+                              definition.textContent = "A test is an assessment or evaluation to measure a person's knowledge, skills, or abilities in a specific subject or to check the functionality and quality of a product or system.";
+                              similar.style.whiteSpace = 'pre-line';
+                              similar.textContent = "\nJest\n\nBest\n\nRest"                              
+                            }
+                            setTimeout(function(){similar.style.display = 'block';}, 800);  
+                            setTimeout(function(){definition.style.display = 'block';}, 1100);
+                          }
+                        });
+                        //---------------------------------------
+                        clickedMessage1.style.display = 'block';
+                        clickedMessage2.style.display = 'block';
+                        clickedMessage3.style.display = 'block';               
+                      });
+
+                      clickableWords.appendChild(wordLink);
+                      clickableWords.appendChild(document.createTextNode(' ')); // Add space between words
+                  });
+  
+                  // Hide the textarea and the translate button
+                  userInput.style.display = 'none';
+                  translateButton.style.display = 'none';
+              });
+          });
+      </script>
+
       <img class="frame-item" alt="" src="{% static 'images/rectangle-247.svg' %}" />
+      <!-- The userinput text area -->
     </div>
   </body>
 </html>
