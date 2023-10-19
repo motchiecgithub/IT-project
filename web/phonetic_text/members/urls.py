@@ -8,4 +8,5 @@ urlpatterns = [
     path('translate/', views.translate, name='translate'),
     path('home/', views.home, name='home'),
     path('translate_c/', views.translate_C, name='translate_c'),
+    path('translate_c/process_word_link/', views.process_word_link, name = 'process_word_link'),
 ]
