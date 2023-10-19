@@ -183,23 +183,6 @@
                             phonetic_translation.textContent = response;
                             phonetic_translation.style.display = 'block';
 
-                            if (t.toLowerCase() == "demo"){
-                              definition.textContent = "Demo is short for demonstration, is a brief presentation or sample that showcases the features and capabilities of a product, service, or software to potential users or customers.";
-                              similar.style.whiteSpace = 'pre-line';
-                              similar.textContent = "\nMemo\n\nDemo\n\nNemo"                            
-                            }
-                            if (t.toLowerCase() == "translation"){
-                              definition.textContent = "Translation is the act of converting text or speech from one language to another, preserving the original content's meaning and facilitating cross-cultural communication.";
-                              similar.style.whiteSpace = 'pre-line';
-                              similar.textContent = "\nRotation\n\nFoundation\n\nTranslation"                             
-                            }
-                            if (t.toLowerCase() == "test"){
-                              definition.textContent = "A test is an assessment or evaluation to measure a person's knowledge, skills, or abilities in a specific subject or to check the functionality and quality of a product or system.";
-                              similar.style.whiteSpace = 'pre-line';
-                              similar.textContent = "\nJest\n\nBest\n\nRest"                              
-                            }
-                            setTimeout(function(){similar.style.display = 'block';}, 800);  
-                            setTimeout(function(){definition.style.display = 'block';}, 1100);
                           }
                         });
                         //---------------------------------------
