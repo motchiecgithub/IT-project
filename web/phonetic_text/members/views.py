@@ -79,5 +79,10 @@ def translate(request):
 def home(request):
   return render(request, 'home.html')
 
+def process_word_link(request):
+    word = request.POST['content']
+    phonetic_text = phonetic_translate_word(word, "en_US")
+    return HttpResponse(phonetic_text)
+
 
 
