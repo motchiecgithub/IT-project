@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'auth/styles.css' %}">
+  </head>
+  <body>
+    <div class="login-container">
+        <div class="card">
+          <div class="card-header">Login</div>
+          <div class="card-body">
+            {% if error_message %}
+              <div class="alert alert-danger" role="alert">{{ error_message }}</div>
+            {% endif %}
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

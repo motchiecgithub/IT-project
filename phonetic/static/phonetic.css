@@ -1,0 +1,66 @@
+body{
+    background: linear-gradient(
+      90deg,
+      rgba(145, 6, 255, 0.09),
+      rgba(193, 207, 255, 1)
+    );
+    font-size: var(--h3-size);
+    color: var(--color-black);
+    font-family: Inter;
+}
+
+.header{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-name{
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.language{
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.text-container{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.7);
+    width: 45%;
+    height: 500px;
+    border: 1px;
+    border-radius: 10px;
+}
+.phonetic-container{
+    margin-top: 20px;
+    width: 45%;
+    height: 500px;
+    border: 1px;
+    border-radius: 10px;
+}
+.ask-gpt{
+    margin-top: 20px;
+    width: 45%;
+    padding: 10px;
+    margin-left: 2%;
+    background-color: rgba(255,255,255,0.7);
+    border: 1px;
+    border-radius: 10px;
+}
+.clickable{
+    font-size: 14px;
+}

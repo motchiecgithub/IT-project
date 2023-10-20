@@ -1,0 +1,83 @@
+body{
+    background: linear-gradient(
+      90deg,
+      rgba(145, 6, 255, 0.09),
+      rgba(193, 207, 255, 1)
+    );
+    text-align: left;
+    font-size: var(--h3-size);
+    color: var(--color-black);
+    font-family: Inter;
+}
+.register-container{
+  background-color: white;
+  border-radius: 10px; 
+  height: 600px;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container{
+  background-color: white;
+  border-radius: 10px; 
+  height: 500px;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.welcome-back{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.form-group{
+  margin-bottom: 20px;
+}
+label{
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 30px;
+  opacity: 0.9;
+}
+input[type=text], input[type=password] {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  width: 340px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+button[type=submit] {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 340px;
+  margin-left: 30px;
+}
+button[type=submit]:hover {
+  background-color: #0062cc;
+}
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+.sign-up{
+  margin-top: 10px;
+  text-align: center;
+}
