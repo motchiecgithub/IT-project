@@ -1,0 +1,322 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .translate-button{
+        position:absolute;
+        display: block;
+        top: 804px;
+        left: 505px;
+        cursor:pointer;
+      }
+      .clickable-word {
+        cursor: pointer;
+        text-decoration: underline;
+        margin-right: 5px;
+        position: relative;
+        font-family: var(--font-inter);
+        font-size: var(--font-size-sm);
+        top: 82px;
+        left: 34px;
+      }
+      #title {
+        position: absolute;
+        top: 100px;
+        left: 750px;
+        font-size:xx-large;
+        color: rgb(130, 29, 212);
+        font-weight: bold;
+      }
+      #clicked-message1 {
+          position: absolute;
+          top: 160px;
+          left: 750px;
+          font-size:x-large;
+          color: rgb(196, 26, 167);
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #phonetic_translation {
+          position: absolute;
+          top: 200px;
+          left: 750px;
+          font-size: large;
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #clicked-message2 {
+          position: absolute;
+          top: 330px;
+          left: 750px;
+          font-size:x-large;
+          color: rgb(196, 26, 167);
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #definition {
+          position: absolute;
+          top: 365px;
+          left: 750px;
+          font-size:large;
+          font-weight: bold;
+          word-wrap: break-word; 
+      }
+      #clicked-message3 {
+          position: absolute;
+          top: 550px;
+          left: 750px;
+          font-size:x-large;
+          color: rgb(196, 26, 167);
+          font-weight: bold;
+          display: none; /* Initially hidden */
+      }
+      #similar {
+          position: absolute;
+          top: 585px;
+          left: 750px;
+          font-size:large;
+          font-weight: bold;
+          display: none; /* Initially hidden */ 
+      }
+      #choiceBox {
+        position: absolute;
+        top: 200px; 
+        left: 400px; 
+      }
+      #language_choice {
+        position: absolute;
+        top: 26px;
+        left: 800px;
+      }
+      #language_choice2 {
+        position: absolute;
+        top: 26px;
+        left: 1000px;
+      }
+      #language_selection {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 800px;
+      }
+      #language_selection2 {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 1000px;
+      }
+    </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/translate_c.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sample-5-parent">
+      <div class="sample-5">
+        <div class="sample-5-child"></div>
+        <img
+          class="phonetic-pioneers-5-1"
+          alt=""
+          src= "{% static 'images/phonetic-pioneers-5-1@2x.png' %}"
+        />
+
+        <div class="sample-5-item"></div>
+        <input class="tell-ai-to" type="search" />
+        
+        <!-- the translate button -->
+        <a class="phonetic-texts-3-1" href="http://127.0.0.1:8000/translate" target="_self">
+          <img src="{% static 'images/phonetictexts31@3x.png' %}" alt="Button Image" width="54" height="52">
+        </a>
+
+        <img
+          class="arrow-block-right-icon"
+          alt=""
+          src="{% static 'images/arrowblockright.svg' %}"
+        />
+
+        <img
+          class="arrow-block-left-icon"
+          alt=""
+          src="{% static 'images/arrowblockleft.svg' %}" 
+        />
+      </div>
+
+      <!-- The buttons -->
+      <a class="phonetic-pioneers" href= "http://127.0.0.1:8000/" target = "_self">Phonetic Pioneers</a>
+      <button id = "language_choice">Language choices - From</button>
+      <div id="language_selection">
+        <label for="language">Select a language:</label>
+        <select id="language">
+            <option value="chinese">Chinese</option>
+            <option value="english">English</option>
+            <option value="japanese">Japanese</option>
+            <option value="french">French</option>
+        </select>
+      </div>
+
+      <button id = "language_choice2">Language choices - To</button>
+      <div id="language_selection2">
+        <label for="language2">Select a language:</label>
+        <select id="language2">
+            <option value="chinese">Chinese</option>
+            <option value="english">English</option>
+            <option value="japanese">Japanese</option>
+            <option value="french">French</option>
+        </select>
+      </div> 
+
+
+      <a class="uploading-docs" href= "http://127.0.0.1:8000/translate_c/" target="_self">Uploading docs</a>
+      <!-- The buttons -->
+
+      <img class="frame-child" alt="" src="{% static 'images/rectangle-246.svg' %}" />
+
+      <!-- The userinput text area -->
+      <textarea id="user-input" class="type-words-to">Type words to learn...</textarea>
+      <button id="translate-button" class ="translate-button">Translate</button>
+      <div id="clickable-words"></div>
+      <div id="clicked-message1">Phonetic Value & Sound Group</div>
+      <div id="clicked-message2">Definitions</div>
+      <div id="clicked-message3">Words with Similar Phonetic Structure</div>
+      <div id="phonetic_translation"></div>
+      <div id="title"></div>
+      <div id="definition"></div>
+      <div id="similar"></div>
+      
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+          // Global variable to store the selected language
+          let languageFrom = "";
+          let languageTo = "";
+
+
+          // Function to set the global variable when a language is chosen
+          function setLanguageFrom() {
+            languageFrom = document.getElementById("language").value;
+          }
+          function setLanguageTo() {
+              languageTo = document.getElementById("language2").value;
+          }
+
+          // Add an event listener to the button
+          document.getElementById("language_choice").addEventListener("click", function() {
+              // Get the language selection box element
+              var languageFrom = document.getElementById("language_selection");
+
+              // Toggle its visibility
+              if (languageFrom.style.display === "none") {
+                languageFrom.style.display = "block";
+              } else {
+                languageFrom.style.display = "none";
+              }
+          });
+
+          document.getElementById("language_choice2").addEventListener("click", function() {
+              // Get the language selection box element
+              var languageTo = document.getElementById("language_selection2");
+
+              // Toggle its visibility
+              if (languageTo.style.display === "none") {
+                languageTo.style.display = "block";
+              } else {
+                languageTo.style.display = "none";
+              }
+          });
+
+          // Add an event listener to the language selection dropdown
+          document.getElementById("language").addEventListener("change", function() {
+              // Call the setLanguage function when a language is chosen
+              setLanguageFrom();
+              // Hide the language selection box when a language is chosen
+              document.getElementById("language_selection").style.display = "none";
+          });         
+
+          // Add an event listener to the language selection dropdown
+          document.getElementById("language2").addEventListener("change", function() {
+              // Call the setLanguage function when a language is chosen
+              setLanguageTo();
+              // Hide the language selection box when a language is chosen
+              document.getElementById("language_selection2").style.display = "none";
+          });
+
+
+          document.addEventListener('DOMContentLoaded', function () {
+              const userInput = document.getElementById('user-input');
+              const translateButton = document.getElementById('translate-button');
+              const clickableWords = document.getElementById('clickable-words');
+              const clickedMessage1 = document.getElementById('clicked-message1');
+              const clickedMessage2 = document.getElementById('clicked-message2');
+              const clickedMessage3 = document.getElementById('clicked-message3');
+              const title = document.getElementById('title');
+              const definition = document.getElementById('definition');
+              const similar = document.getElementById('similar');
+              const phonetic_translation = document.getElementById('phonetic_translation');
+  
+              translateButton.addEventListener('click', function () {
+                  const inputText = userInput.value;
+                  const words = inputText.split(/\s+/); // Split the input text by spaces
+  
+                  // Create clickable links for each word
+                  words.forEach(word => {
+                      const wordLink = document.createElement('span');
+                      wordLink.textContent = word;
+                      wordLink.classList.add('clickable-word');
+
+                      // clickable word behavior
+                      wordLink.addEventListener('click', function () {  
+                        //---------------------------------------
+                        var w = wordLink.textContent.toLowerCase()
+                        var content = w + "@" + languageFrom + "@" + languageTo;
+
+                        $.ajax({
+                          type: 'POST',
+                          url: 'process_word_link/',
+                          data: { csrfmiddlewaretoken: '{{ csrf_token }}', content: content},
+                          success: function callback(response){
+                            const t = word.toUpperCase();
+                            title.textContent = t;
+                            title.style.display = 'block';
+                            
+                            var res = response.split("@");
+                            phonetic_translation.textContent = res[0];
+                            phonetic_translation.style.display = 'block';
+
+                            definition.textContent = res[1];
+                            definition.style.display = 'block';
+                            similar.textContent = res[2];
+                            similar.style.display = 'block';  
+                          }
+                        });
+                        //---------------------------------------
+                        clickedMessage1.style.display = 'block';
+                        clickedMessage2.style.display = 'block';
+                        clickedMessage3.style.display = 'block';               
+                      });
+
+                      clickableWords.appendChild(wordLink);
+                      clickableWords.appendChild(document.createTextNode(' ')); // Add space between words
+                  });
+  
+                  // Hide the textarea and the translate button
+                  userInput.style.display = 'none';
+                  translateButton.style.display = 'none';
+              });
+          });
+      </script>
+
+      <img class="frame-item" alt="" src="{% static 'images/rectangle-247.svg' %}" />
+      <!-- The userinput text area -->
+    </div>
+  </body>
+</html>
