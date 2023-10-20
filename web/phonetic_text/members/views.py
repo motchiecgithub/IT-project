@@ -2,11 +2,12 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Member
 from search import *
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import TranslationForm
-from soundex import *
-from flask import Flask, render_template, request, redirect, url_for, session, flash
 from list_convert import *
+from django.contrib import auth
+from django.contrib.auth.models import User
+from .gpt import gpt_definition, gpt_phonetic, gpt_translate, ask_gpt
 
 def members(request):
   mymembers = Member.objects.all().values()
@@ -15,19 +16,19 @@ def members(request):
     'mymembers': mymembers,
   }
   return HttpResponse(template.render(context, request))
-  
+
 def details(request, id):
-  mymember = Member.objects.get(id=id)
-  template = loader.get_template('details.html')
-  context = {
-    'mymember': mymember,
-  }
-  return HttpResponse(template.render(context, request))
+	mymember = Member.objects.get(id=id)
+	template = loader.get_template('details.html')
+	context = {
+		'mymember': mymember,
+	}
+	return HttpResponse(template.render(context, request))
 
 def translate_C(request):
-  template = loader.get_template('translate_c.html')
-  context = {}
-  return HttpResponse(template.render(context, request))
+	template = loader.get_template('translate_c.html')
+	context = {}
+	return HttpResponse(template.render(context, request))
 
 def main(request):
   template = loader.get_template('main.html')
@@ -80,9 +81,52 @@ def home(request):
   return render(request, 'home.html')
 
 def process_word_link(request):
-    word = request.POST['content']
-    phonetic_text = phonetic_translate_word(word, "en_US")
-    return HttpResponse(phonetic_text)
+    content = request.POST['content']
+    content_lst = content.split("@")
+    word = content_lst[0]
+    language1 = content_lst[1]
+    language2 = content_lst[2]
+    translated_word = gpt_translate(word, language1, language2)
+    definition = gpt_definition(word, language2)
+    phonetic = gpt_phonetic(word, language2)
+    
+    
 
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
 
+        if password1 == password2:
+            try:
+                user = User.objects.create_user(username, email, password1)
+                user.save()
+                auth.login(request, user)
+                return redirect('phonetic:translate_c')
+            except:
+                error_message = 'Error creating account'
+                return render(request, 'register.html', {'error_message': error_message})
+        else:
+            error_message = 'Password dont match'
+            return render(request, 'register.html', {'error_message': error_message})
+    return render(request, 'register.html')
 
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('phonetic:translate_c')
+        else:
+            error_message = 'Invalid username or password'
+            return render(request, 'login.html', {'error_message': error_message})
+    else:
+        return render(request, 'login.html')

@@ -79,6 +79,35 @@
           font-weight: bold;
           display: none; /* Initially hidden */ 
       }
+      #choiceBox {
+        position: absolute;
+        top: 200px; 
+        left: 400px; 
+      }
+      #language_choice {
+        position: absolute;
+        top: 26px;
+        left: 800px;
+      }
+      #language_choice2 {
+        position: absolute;
+        top: 26px;
+        left: 1000px;
+      }
+      #language_selection {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 800px;
+      }
+      #language_selection2 {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 1000px;
+      }
     </style>
 
     <meta charset="utf-8" />
@@ -124,7 +153,29 @@
 
       <!-- The buttons -->
       <a class="phonetic-pioneers" href= "http://127.0.0.1:8000/" target = "_self">Phonetic Pioneers</a>
-      <a class="language-choices" href= "http://127.0.0.1:8000/translate_c/" target="_self">Language choices</a>
+      <button id = "language_choice">Language choices - From</button>
+      <div id="language_selection">
+        <label for="language">Select a language:</label>
+        <select id="language">
+            <option value="chinese">Chinese</option>
+            <option value="english">English</option>
+            <option value="japanese">Japanese</option>
+            <option value="french">French</option>
+        </select>
+      </div>
+
+      <button id = "language_choice2">Language choices - To</button>
+      <div id="language_selection2">
+        <label for="language2">Select a language:</label>
+        <select id="language2">
+            <option value="chinese">Chinese</option>
+            <option value="english">English</option>
+            <option value="japanese">Japanese</option>
+            <option value="french">French</option>
+        </select>
+      </div> 
+
+
       <a class="uploading-docs" href= "http://127.0.0.1:8000/translate_c/" target="_self">Uploading docs</a>
       <!-- The buttons -->
 
@@ -145,6 +196,61 @@
 
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
+          // Global variable to store the selected language
+          let languageFrom = "";
+          let languageTo = "";
+
+
+          // Function to set the global variable when a language is chosen
+          function setLanguageFrom() {
+            languageFrom = document.getElementById("language").value;
+          }
+          function setLanguageTo() {
+              languageTo = document.getElementById("language2").value;
+          }
+
+          // Add an event listener to the button
+          document.getElementById("language_choice").addEventListener("click", function() {
+              // Get the language selection box element
+              var languageFrom = document.getElementById("language_selection");
+
+              // Toggle its visibility
+              if (languageFrom.style.display === "none") {
+                languageFrom.style.display = "block";
+              } else {
+                languageFrom.style.display = "none";
+              }
+          });
+
+          document.getElementById("language_choice2").addEventListener("click", function() {
+              // Get the language selection box element
+              var languageTo = document.getElementById("language_selection2");
+
+              // Toggle its visibility
+              if (languageTo.style.display === "none") {
+                languageTo.style.display = "block";
+              } else {
+                languageTo.style.display = "none";
+              }
+          });
+
+          // Add an event listener to the language selection dropdown
+          document.getElementById("language").addEventListener("change", function() {
+              // Call the setLanguage function when a language is chosen
+              setLanguageFrom();
+              // Hide the language selection box when a language is chosen
+              document.getElementById("language_selection").style.display = "none";
+          });         
+
+          // Add an event listener to the language selection dropdown
+          document.getElementById("language2").addEventListener("change", function() {
+              // Call the setLanguage function when a language is chosen
+              setLanguageTo();
+              // Hide the language selection box when a language is chosen
+              document.getElementById("language_selection2").style.display = "none";
+          });
+
+
           document.addEventListener('DOMContentLoaded', function () {
               const userInput = document.getElementById('user-input');
               const translateButton = document.getElementById('translate-button');
@@ -170,7 +276,8 @@
                       // clickable word behavior
                       wordLink.addEventListener('click', function () {  
                         //---------------------------------------
-                        var content = wordLink.textContent.toLowerCase();
+                        var w = wordLink.textContent.toLowerCase()
+                        var content = w + "@" + languageFrom + "@" + languageTo;
 
                         $.ajax({
                           type: 'POST',
@@ -180,9 +287,15 @@
                             const t = word.toUpperCase();
                             title.textContent = t;
                             title.style.display = 'block';
-                            phonetic_translation.textContent = response;
+                            
+                            var res = response.split("@");
+                            phonetic_translation.textContent = res[0];
                             phonetic_translation.style.display = 'block';
 
+                            definition.textContent = res[1];
+                            definition.style.display = 'block';
+                            similar.textContent = res[2];
+                            similar.style.display = 'block';  
                           }
                         });
                         //---------------------------------------
