@@ -89,7 +89,9 @@ def process_word_link(request):
     translated_word = gpt_translate(word, language1, language2)
     definition = gpt_definition(word, language2)
     phonetic = gpt_phonetic(word, language2)
-    similar = gpt_similar(word)
+    similar = gpt_similar(word, language2)
+    result = str(phonetic) + "@" + str(definition) + "@" + str(similar)
+    return result
     
     
 
