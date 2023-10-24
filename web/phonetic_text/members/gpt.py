@@ -14,7 +14,20 @@ def gpt_definition(word, language):
         ]
     )
     return response.choices[0]['message']['content']
-
+    
+def gpt_similar(word, language):
+    load_dotenv()
+    openai.api_key = os.getenv('OPENAI_API_KEY')
+    response = openai.ChatCompletion.create(
+        model = "gpt-4",
+        messages = [ 
+            {"role": "system", "content": f"You are an {language} assistant"},
+            {"role": "system", "content": "Please return 3 words with similar phonetic structure"},
+            {"role": "user", "content": word}
+        ]
+    )
+    return response.choices[0]['message']['content']
+    
 def gpt_translate(word, language1, language2):
     load_dotenv()
     openai.api_key = os.getenv('OPENAI_API_KEY')
