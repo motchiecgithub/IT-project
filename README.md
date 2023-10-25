@@ -11,10 +11,12 @@ relative python program for the html to runwith is inside the member folder.
 Deployment:
 
 Option1: 
+
 To set up the website, run the Scripts\activate.bat command under the Django enviroment, in the web path
 Than cd to phonetic_text to run the command python manage.py runserver
 Go to the web http://127.0.0.1:8000 to have access of the website
 
 Option2:
+
 Run the project using Django applications
 
