@@ -2,6 +2,19 @@ import os
 from dotenv import load_dotenv
 import openai
 
+def davinci_similar(word, language):
+    load_dotenv()
+    openai.api_key = os.getenv('OPENAI_API_KEY')
+    response = openai.Completion.create(
+        engine= "text-davinci-002",
+        prompt= "Find 3 words with similar structure to " + word + ":",
+        max_tokens = 30,
+        top_p = 1,
+        frequency_penalty = 0,
+        presence_penalty=0
+    ).choices[0].text
+    return response
+
 def gpt_definition(word, language):
     load_dotenv()
     openai.api_key = os.getenv('OPENAI_API_KEY')

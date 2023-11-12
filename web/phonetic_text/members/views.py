@@ -7,7 +7,7 @@ from .forms import TranslationForm
 from list_convert import *
 from django.contrib import auth
 from django.contrib.auth.models import User
-from .gpt import gpt_definition, gpt_phonetic, gpt_translate, ask_gpt
+from .gpt import gpt_definition, gpt_phonetic, gpt_translate, ask_gpt, gpt_similar, davinci_similar
 
 def members(request):
   mymembers = Member.objects.all().values()
@@ -87,11 +87,11 @@ def process_word_link(request):
     language1 = content_lst[1]
     language2 = content_lst[2]
     translated_word = gpt_translate(word, language1, language2)
-    definition = gpt_definition(word, language2)
-    phonetic = gpt_phonetic(word, language2)
-    similar = gpt_similar(word, language2)
+    definition = gpt_definition(translated_word, language2)
+    phonetic = gpt_phonetic(translated_word, language2)
+    similar = davinci_similar(translated_word, language2)
     result = str(phonetic) + "@" + str(definition) + "@" + str(similar)
-    return result
+    return HttpResponse(result)
     
     
 
