@@ -1,0 +1,15 @@
+-----> Building on the Heroku-22 stack
+-----> Using buildpack: heroku/python
+-----> Python app detected
+-----> Using Python version specified in Pipfile.lock
+-----> Using cached install of python-3.10.13
+-----> Installing pip 23.3.1, setuptools 68.0.0 and wheel 0.41.3
+       Skipping installation, as Pipfile.lock hasn't changed since last deploy.
+-----> Installing SQLite3
+-----> Discovering process types
+       Procfile declares types -> (none)
+-----> Compressing...
+       Done: 58.5M
+-----> Launching...
+       Released v4
+       https://phonetic-653037448884.herokuapp.com/ deployed to Heroku
